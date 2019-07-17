@@ -57,16 +57,24 @@
                 
                 
             }
+            
+            function clear() {
+                a = document.getElementById('a')
+                b = document.getElementById('b')
+                
+                a.innerHTML = ""
+                b.innerHTML = ""
+            }
         </script>
         <body onload="onload();" class="qwe">
             
-        <form data-netlify="true" method="POST" name="youngscotcards" action="" target="">
+
 
             <input type="number" name="enter" class="enter form-control" value="" id="x" placeholder="Type youngscot card number"/>
-                <input type="button" value="Submit" onclick="y(); x = document.getElementById('x');" class="mt-1 btn btn-primary"/>
-            
-                <button class="rty btn btn-primary mt-1" onclick="document.getElementById('a').value = ""; document.getElementById('b').value = """>Clear</button>
-            </form>
+            <input type="button" value="Submit" onclick="y(); x = document.getElementById('x');" class="mt-1 btn btn-primary"/>
+
+            <button class="rty btn btn-primary mt-1" onclick="clear()">Clear</button>
+      
 
         </body>
         <p id="a" class="mt-1 h3"></p>
