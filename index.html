@@ -1,121 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Card Validator</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <script type="text/javascript">
+      //List of valid young scot numbers
+      var validNums = [
+        "1234567890123456",
+        "2222222222222222",
+        "3333333333333333"
+      ];
+      var inputBox;
+      function onload() {
+        //Get input
+        inputBox = document.getElementById("inputBox");
+      }
+      function handleinput() {
+        //Remove spaces
+        inputBox = inputBox.value.replace(/\s/g, "");
 
-</head>
-<body>
-        <script type="text/javascript">
-            
-            
-            //List of valid young scot numbers
-            var numList = ['1234567890123456', '2222222222222222', '3333333333333333'];
-            var x;
-            function onload() { 
-                
-                //Get input
-                x = document.getElementById('x');
-                
-                
-            }
-            function y(){
-                
-                //Remove spaces
-                x = x.value.replace(/\s/g, '')
-        
-        
-                //Check if input is valid card number
-                var ehhhh = numList.includes(x)
-                var xLen = x.length;
-    
-                if (x != "" && xLen == "16") {
-                    if (ehhhh == false) {
-                        document.getElementById("b").innerHTML = "Not eligible"
-                        document.getElementById("a").innerHTML = ""
-                    } else if (ehhhh == true) {
-                        document.getElementById("a").innerHTML = "Eligible"
-                        document.getElementById("b").innerHTML = ""
-                    } else {
-                        console.log("error");
-                    }
-                } else if (x == "") {
-                    document.getElementById("b").innerHTML = "The box cannot be empty"
-                    document.getElementById("a").innerHTML = ""
-                } else if (xLen != "16") {
-                    document.getElementById("b").innerHTML = "You must input 16 characters"
-                    document.getElementById("a").innerHTML = ""
-                } else {
-                    console.log("error")
-                }
-                
-                
-                
-            }
-            
-            function clear() {
-                a = document.getElementById('a')
-                b = document.getElementById('b')
-                
-                a.innerHTML = ""
-                b.innerHTML = ""
-            }
-        </script>
-        <body onload="onload();" class="qwe">
-            
+        //Check if input is valid card number
+        var isValid = validNums.includes(inputBox);
+        var inputLen = inputBox.length;
 
+        if (inputBox != "" && inputLen == "16") {
+          if (!isValid) {
+            document.getElementById("red").innerHTML = "Not eligible";
+            document.getElementById("green").innerHTML = "";
+          } else if (isValid) {
+            document.getElementById("green").innerHTML = "Eligible";
+            document.getElementById("red").innerHTML = "";
+          } else {
+            console.log("error");
+          }
+        } else if (inputBox == "") {
+          document.getElementById("red").innerHTML = "The box cannot be empty";
+          document.getElementById("green").innerHTML = "";
+        } else if (inputLen != "16") {
+          document.getElementById("red").innerHTML =
+            "You must input 16 characters";
+          document.getElementById("green").innerHTML = "";
+        } else {
+          console.log("error");
+        }
+      }
+    </script>
+    <body onload="onload();" class="body">
+      <input
+        type="number"
+        name="enter"
+        class="enter form-control"
+        value=""
+        id="inputBox"
+        placeholder="Type youngscot card number"
+      />
+      <input
+        type="button"
+        value="Submit"
+        onclick="handleinput(); inputBox = document.getElementById('inputBox');"
+        class="mt-1 btn btn-primary"
+      />
+    </body>
+    <p id="green" class="mt-1 h3"></p>
+    <p id="red" class="mt-1 h3"></p>
 
-            <input type="number" name="enter" class="enter form-control" value="" id="x" placeholder="Type youngscot card number"/>
-            <input type="button" value="Submit" onclick="y(); x = document.getElementById('x');" class="mt-1 btn btn-primary"/>
+    <!--<p>Test numbers that work: 1234567890123456 2222222222222222 3333333333333333</p>-->
 
-            <button class="rty btn btn-primary mt-1" onclick="clear()">Clear</button>
-      
+    <img src="scotcard.jpg" class="img-fluid" width="400px" height="auto" />
 
-        </body>
-        <p id="a" class="mt-1 h3"></p>
-        <p id="b" class="mt-1 h3"></p>
-        
-        <!--<p>Test numbers that work: 1234567890123456 2222222222222222 3333333333333333</p>-->
+    <style>
+      #red {
+        color: red;
+        text-align: center;
+      }
+      .body {
+        text-align: center;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+      }
+      #green {
+        color: green;
+        text-align: center;
+      }
+    </style>
 
-        <img src="scotcard.jpg" class="img-fluid" width="400px" height="auto">
-
-        <style>
-            #b {
-                color: red;
-                text-align: center;
-            }
-            .qwe {
-                text-align: center;
-                margin: auto;
-                width: 50%;
-                padding: 10px;
-                
-            }
-            #a {
-                color: green;
-                text-align: center;
-            }
-            #b {
-                color: red;
-                text-align: center;
-            }
-            .rty {
-                align-items: flex-end;
-            }
-                
-                
-        </style>
-        
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
-
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
